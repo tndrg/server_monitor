@@ -12,7 +12,7 @@ class Monitor(Thread):
     def __init__(self, delay, path):
         super(Monitor, self).__init__()
         self.stopped = False
-        self.delay = delay # Time between calls to GPUtil
+        self.delay = delay
         self.path = path
         self.start()
 
@@ -54,9 +54,7 @@ if __name__ == '__main__':
             csv.writer(f).writerow(headers)
     with open(f"{results_dir}/CPU.csv", 'w') as f:
         csv.writer(f).writerow(headers)
-    # Instantiate monitor with a 10-second delay between updates
+
     monitor = Monitor(args.interval,results_dir)
-    # Train, etc.
     time.sleep(args.period*24*60*60) # days to seconds
-    # Close monitor
     monitor.stop()
