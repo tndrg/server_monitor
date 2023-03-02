@@ -1,11 +1,12 @@
 import psutil
 import GPUtil
-from threading import Thread
-from datetime import datetime
 import time
 import argparse
 import os
 import csv
+
+from threading import Thread
+from datetime import datetime
 
 
 class Monitor(Thread):
@@ -38,8 +39,8 @@ class Monitor(Thread):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-p','--period', type=int, default=7, help="Specify the period (days) to monitor the server")
-    parser.add_argument('-i','--interval', type=int, default=30, help="Specify the interval (mins) to monitor the server")
+    parser.add_argument('-p','--period', type=float, default=7, help="Specify the period (days) to monitor the server")
+    parser.add_argument('-i','--interval', type=float, default=30, help="Specify the interval (mins) to monitor the server")
     parser.add_argument('--path', type=str, default='./results', help="Specify the path to write the results")
     args = parser.parse_args()
     if not os.path.isdir(args.path):
