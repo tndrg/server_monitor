@@ -24,6 +24,7 @@ if __name__ == '__main__':
     fig, ax = plt.subplots(2,figsize=(12,10))
     fig.suptitle(socket.gethostname())
     for df,d in zip(dfs,devices):
+         df.Time  = pd.to_datetime(df.Time,format="%H:%M-%d-%m-%Y")
          ax[0].plot(df.Time,df.Util,label=d) 
     ax[0].legend()
     ax[0].set_ylabel('Utilisation %')
